@@ -1,0 +1,19 @@
+version: models-v1-validation-complete
+status: validation_complete_pending_protocol_freeze
+models:
+  - {id: persistence, family: simple, training: deterministic, tracks: [U], probabilistic: false}
+  - {id: drift, family: simple, training: deterministic, tracks: [U], probabilistic: false}
+  - {id: seasonal_365, family: simple, training: deterministic, tracks: [U], probabilistic: false}
+  - {id: ets, family: statistical, training: local_origin_refit, tracks: [U], probabilistic: false}
+  - {id: arima, family: statistical, training: local_origin_refit, tracks: [U], probabilistic: false}
+  - {id: fourier_ridge, family: statistical, training: local_origin_refit, tracks: [U], probabilistic: false}
+  - {id: lightgbm, family: machine_learning, training: target_domain_global_direct, tracks: [U, M, X], probabilistic: false, seeds: [17, 29, 43], runtime_version: 4.7.0, source_commit: 6d386edf77a363750669ba622b133ca4e794e353, license: MIT}
+  - {id: dlinear, family: target_domain_deep, training: target_domain_global, tracks: [U, M, X], probabilistic: false, seeds: [17, 29, 43], runtime_torch: 2.14.0, source_reference_commit: 0c113668a3b88c4c4ee586b8c5ec3e539c4de5a6, source_license: Apache-2.0, architecture_variant: decomposition_temporal_linear_with_channel_fusion_head}
+  - {id: patchtst, family: target_domain_deep, training: target_domain_global, tracks: [U, M, X], probabilistic: false, seeds: [17, 29, 43], runtime_torch: 2.14.0, source_reference_commit: 204c21efe0b39603ad6e2ca640ef5896646ab1a9, source_license: Apache-2.0, architecture_variant: channel_independent_patch_encoder_with_channel_fusion_head}
+  - {id: timesfm_3, family: foundation, training: frozen_zero_shot, tracks: [U, M, X], probabilistic: true, local_path: weights/timesfm-3.0-pytorch, anchor: true, runtime_version: 3.0.2, source_commit: 8cb0628371af142e16b8c232cc9fbf667ffb12f9, weight_hash: 2d3882446acaf25d7ce8c43d95fa63a145e7d7bc6a4ab1b1cdffd93e4da0eca4, license: timesfm-non-commercial-license-v1.0}
+  - {id: chronos_2, family: foundation, training: frozen_zero_shot, tracks: [U, M, X], probabilistic: true, upstream: amazon/chronos-2, local_path: weights/chronos-2, runtime_version: 2.3.3.dev0, source_commit: 4dbf163c2734c089cdf7da2b86fde48862ff9c6f, weight_revision: 29ec3766d36d6f73f0696f85560a422f50e8498c, weight_hash: fe597872d0ac5dc01a8a7e4c64a5a86b3f99e4358737df8640f2088a94fcada4, license: Apache-2.0}
+  - {id: moirai_2_small, family: foundation, training: frozen_zero_shot, tracks: [U, M, X], track_constraints: {U: [1, 7, 30, 90, 180], M: [1, 7, 30], X: [1, 7, 30]}, probabilistic: true, upstream: Salesforce/moirai-2.0-R-small, local_path: weights/moirai-2.0-R-small, runtime_version: 2.0.0, source_commit: cfd46d4510ed8896f263116f32928eede05b0a75, weight_revision: 30f43ff08c8494f4943ae1521e9d4e94a0fbb389, weight_hash: 15e21402ab051a61877d4c6ba4a0e1abd0d1ede33206797c9b77f758086b2089, code_license: Apache-2.0, weight_license: CC-BY-NC-4.0}
+  - {id: toto_2_313m, family: foundation, training: frozen_zero_shot, tracks: [U, M], probabilistic: true, upstream: Datadog/Toto-2.0-313m, local_path: weights/toto-2.0-313m, runtime_version: 2.0.0, source_commit: c079fd7e32424c5d33f9e267c5d32a5630242eb5, weight_revision: a7bab288f5e95f8606f8306f86659357e1c001ef, weight_hash: be24d1a406954cbfbf2b61470ce3e45de5dca9842bc9b85a2974bf8c4347fe3b, license: Apache-2.0}
+fallback_order: [sundial_base, chronos_bolt_base]
+replacement_requires: [license_failure, install_failure, hardware_failure, contract_failure]
+replacement_must_not_use_test_performance: true

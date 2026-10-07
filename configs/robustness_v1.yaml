@@ -1,0 +1,36 @@
+version: robustness-v1-selected
+status: validation_selection_complete
+main_input_variant: Q0
+q1:
+  role: input_only_sensitivity
+  causal: true
+  transform: one_sided_hampel_clip
+  selection_split: validation
+  selection_track: U
+  selection_horizon: 90
+  selection_models: [persistence, drift]
+  selection_metric: mean_anchor_station_equal_mase
+  candidates:
+    window: [30, 90]
+    threshold: [6.0, 8.0, 10.0]
+    minimum_history_by_window: {30: 14, 90: 30}
+  selected:
+    window: 30
+    threshold: 10.0
+    minimum_history: 14
+    validation_mean_anchor_station_equal_mase: 7.850135
+  transform_order: [causal_forward_fill_max_3_days, one_sided_hampel_clip]
+  truth_variant: Q0
+  mase_scale_variant: Q0_730_day_history
+context_sensitivity:
+  main_context_days: 730
+  alternative_context_days: 365
+  selection_role: preregistered_sensitivity_not_model_selection
+probability:
+  native_quantile_levels: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+  common_interval_coverage: 0.8
+  unsupported_interval_coverage: 0.9
+  unsupported_policy: N/A
+  quantile_crossing_diagnostic: raw_adjacent_crossing_rate
+  scoring_rearrangement: per_target_increasing_rearrangement_without_truth
+  metrics: [mean_quantile_loss, weighted_interval_score, coverage_80, width_80]

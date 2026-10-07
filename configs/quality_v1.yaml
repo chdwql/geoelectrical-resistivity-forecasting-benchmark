@@ -1,0 +1,26 @@
+version: quality-v1
+status: q0_and_retrospective_frozen_q1_validation_pending
+q0:
+  remove_exact_duplicates: true
+  conflicting_timestamp: missing
+  preserve_unknown_steps: true
+  preserve_unknown_spikes: true
+q1:
+  status: validation_pending
+  enabled_for_main_ranking: false
+  input_only: true
+  causal: true
+  candidate_detector: rolling_median_mad
+  detector_parameters_source: validation_only
+event_ledger:
+  record_estimated_event_time: true
+  record_available_at: true
+  retrospective_labels_for_diagnostics_only: true
+  retrospective_detector:
+    version: rolling-two-sided-median-mad-v1
+    reference_start: 2016-01-01
+    reference_end: 2020-12-31
+    window_days: 14
+    minimum_side_observations: 7
+    threshold_mad: 8.0
+    cluster_days: 14

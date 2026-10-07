@@ -1,0 +1,30 @@
+version: series-v1
+status: frozen
+selection_basis: coverage_audit_before_formal_model_testing
+target_rule: non_excluded_resistivity_series_with_observed_targets_in_validation_and_test_periods
+target_series:
+  - 11003/D/3211
+  - 11003/D/3212
+  - 11005/G/3211
+  - 11005/G/3212
+  - 12301/1/3211
+  - 12301/1/3212
+  - 22018/1/3212
+  - 22018/1/3213
+  - 23003/3/3211
+  - 23003/3/3212
+  - 32019/2/3211
+  - 32019/2/3212
+  - 32019/2/3213
+  - 37005/E/3211
+  - 37005/E/3212
+  - 51012/5/3213
+  - 51012/5/3214
+  - 62012/A/3211
+  - 62012/A/3212
+  - 62012/A/3214
+context_only_resistivity_series:
+  - series_id: 51012/5/3211
+    first_date: 2018-01-01
+    last_date: 2020-08-20
+    reason: no_validation_or_test_targets

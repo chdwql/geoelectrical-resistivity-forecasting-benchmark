@@ -1,0 +1,32 @@
+version: statistical-models-v1-selected
+status: validation_selection_complete
+ets:
+  family: linear_gaussian_state_space_ets
+  candidate_trend: [false, true]
+  candidate_damped_trend: [false, true]
+  seasonality: null
+arima:
+  nonseasonal: true
+  candidate_orders:
+    - [1, 1, 0]
+    - [2, 1, 0]
+    - [7, 1, 0]
+    - [1, 1, 1]
+fourier_ridge:
+  annual_harmonics: [1, 3, 6]
+  alpha: [0.1, 1.0, 10.0]
+selection_split: validation
+selection_metric: station_equal_mase
+selection_horizon: 90
+selected:
+  ets:
+    trend: true
+    damped_trend: true
+    validation_station_equal_mase: 7.399845
+  arima:
+    order: [7, 1, 0]
+    validation_station_equal_mase: 7.596180
+  fourier_ridge:
+    annual_harmonics: 1
+    alpha: 10.0
+    validation_station_equal_mase: 6.748669

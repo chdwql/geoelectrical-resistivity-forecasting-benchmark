@@ -1,0 +1,14 @@
+[project]
+name = "geo-bench-toto-2-313m-runtime"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "huggingface-hub>=0.20",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pyarrow>=18",
+  "toto-2 @ git+https://github.com/DataDog/toto.git@c079fd7e32424c5d33f9e267c5d32a5630242eb5#subdirectory=toto2",
+]
+
+[tool.uv]
+package = false

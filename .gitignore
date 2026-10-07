@@ -1,0 +1,66 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.venv-*
+
+# Restricted observations and generated artifacts
+data/[0-9]*/
+data/raw/
+data/interim/
+data/processed/
+data/figures_final_selected/
+artifacts/
+
+# Downloaded model weights
+weights/
+
+# Local secrets and runtime files
+.env
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Keep portable manifests and documentation under data/
+!data/*.csv
+!data/*.md
+!data/*.py
+
+# Locally regenerated Windows acquisition plans
+data/fetch_tasks_*.csv
+
+# Authoring and research history stay local; publish only the reproduction code.
+data/
+manuscript/
+release/
+results/
+examples/output/
+docs/*
+!docs/REPRODUCTION.md
+!docs/MODEL_ENVIRONMENTS.md
+!docs/model_cards/
+!docs/frozen/
+docs/frozen/*
+!docs/frozen/DATA_PROTOCOL_V1.json
+!docs/frozen/MODEL_PROTOCOL_V1.json
+analysis/*
+!analysis/__init__.py
+!analysis/g6_extended.py
+!analysis/g6_figures.py
+!analysis/g6_remaining.py
+!analysis/g6_report.py
+!analysis/test_g6_report.py
+!analysis/manuscript_figures.py
+!analysis/manuscript_tables.py
+!analysis/supplementary_figures.py
+!analysis/public_release.py
+!analysis/reproduce.py
+tests/test_manuscript_assembly.py
+tests/test_manuscript_text.py

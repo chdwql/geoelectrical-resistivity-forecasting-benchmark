@@ -1,0 +1,71 @@
+version: target-domain-models-v1-selected
+status: validation_selection_complete
+selection_split: validation
+selection_metric: station_equal_mase
+selection_horizon: 90
+selection_tracks: [U, M, X]
+selection_aggregation: unweighted_mean_across_tracks
+shared_configuration_across_tracks: true
+deep_selection:
+  track: U
+  horizon: 90
+  rationale: select_architecture_training_budget_without_using_M_or_X_information_gain
+  apply_selected_configuration_to_tracks: [U, M, X]
+seeds: [17, 29, 43]
+lightgbm:
+  strategy: pooled_direct_multi_step
+  objective: l1
+  candidate_num_leaves: [15, 31, 63]
+  candidate_learning_rate: [0.03, 0.05]
+  candidate_n_estimators: [300, 600]
+  fixed:
+    subsample: 0.9
+    colsample_bytree: 0.9
+    n_jobs: 4
+  selected:
+    num_leaves: 63
+    learning_rate: 0.03
+    n_estimators: 300
+    validation_station_equal_mase:
+      U: 5.098261
+      M: 5.279692
+      X: 6.089756
+      mean: 5.489236
+dlinear:
+  source_reference_commit: 0c113668a3b88c4c4ee586b8c5ec3e539c4de5a6
+  decomposition_kernel: 25
+  channel_fusion: linear_output_head
+  training_batch_size: 16
+  candidate_epochs: [20, 50, 100]
+  candidate_learning_rate: [0.0003, 0.001]
+  selected:
+    epochs: 20
+    learning_rate: 0.0003
+    validation_u90_station_equal_mase: 4.671112
+    validation_selected_station_equal_mase:
+      M: 4.554141
+      X: 4.538815
+patchtst:
+  source_reference_commit: 204c21efe0b39603ad6e2ca640ef5896646ab1a9
+  patch_length: 16
+  stride: 8
+  d_model: 64
+  heads: 4
+  layers: 3
+  dropout: 0.1
+  channel_fusion: flattened_encoded_channel_head
+  training_batch_size: 16
+  candidate_epochs: [20, 50, 100]
+  candidate_learning_rate: [0.0001, 0.0003]
+  selected:
+    epochs: 20
+    learning_rate: 0.0001
+    validation_u90_station_equal_mase: 5.348544
+    validation_selected_station_equal_mase:
+      M: 6.004485
+      X: 6.666149
+feature_contract:
+  lags: [1, 2, 3, 7, 14, 30, 90, 180, 365, 730]
+  rolling_windows: [7, 30, 90, 365]
+  known_future: [lead, year_sin, year_cos, week_sin, week_cos]
+  maximum_causal_fill_days: 3

@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Please cite the version of the benchmark software used in your work."
+type: software
+title: "Geoelectrical Resistivity Forecasting Benchmark"
+authors:
+  - family-names: Wang
+    given-names: Qinglin
+    affiliation: Shandong Earthquake Agency
+    orcid: "https://orcid.org/0009-0002-1892-5450"
+version: 0.1.0
+date-released: '2026-10-07'
+license: Apache-2.0
+repository-code: "https://github.com/chdwql/geoelectrical-resistivity-forecasting-benchmark"
+abstract: "Reproduction code, frozen configurations, and aggregate result inputs for an apparent-resistivity observation forecasting benchmark."

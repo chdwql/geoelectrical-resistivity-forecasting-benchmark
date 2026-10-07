@@ -1,0 +1,36 @@
+{
+  "freeze_kind": "data_protocol_v1",
+  "config_hashes": {
+    "configs/data_v1.yaml": "3fb32ffab240171f02b1684b4aef93687f662b432e6c1193fb698af33bdb54a6",
+    "configs/quality_v1.yaml": "23ece837f729dabc43627ae104d5c7432e0ebec58891cdd34c7ebd13c0ddbc37",
+    "configs/protocol_v1.yaml": "bdcbafb29eaad2fba3424ce1ff3be147b264031e11574473d44d7a68ec6578e3",
+    "configs/series_v1.yaml": "e98e7e5ff222b3811953a908e2e806906bbae15baac73f971ec723fe3e01e80f"
+  },
+  "artifact_hashes": {
+    "artifacts/data_v1/source_audit.csv": "6ed6ed92545d34c18a067d393a5c9ac6c769344ad00d83d309962b017d95187a",
+    "artifacts/data_v1/raw_acquisition_audit.csv": "64cfce23c5cc9f0ee903a2b1424421b9f04fe50badce1f67489f7afbd3fa10fd",
+    "artifacts/data_v1/daily_q0_manifest.json": "2c6d350b7b6aba788046742bbd0aba41c5fd8206a7b4ce767bcb1c605e6c35c7",
+    "artifacts/data_v1/series_catalog.csv": "6d1960717f719e2c4ace2c1e0c38c7568b54d5215286fae30987ddfa8d89d07a",
+    "artifacts/data_v1/windows.parquet": "b74c2dc2facef12223bca7e21b61744c08abc0b568b42b212a6811858bf7a529",
+    "artifacts/data_v1/quality_event_candidates.csv": "e3cc8dab71051a868caac06d1922552f5f2e1c0771723abf40d7a9aad7c7d254"
+  },
+  "data_pipeline_code_hash": "339fbe050f0b05f442b1529bad586bb6d9ab4922decc5863e5423d5362acbfe6",
+  "counts": {
+    "raw_partitions": 1555,
+    "invalid_raw_partitions": 0,
+    "catalog_series": 48,
+    "resistivity_series_observed": 21,
+    "evaluation_target_series": 20,
+    "candidate_windows": 110400,
+    "eligible_windows": 78147,
+    "quality_event_candidates": 502
+  },
+  "protocol_hash": "f7c65c07da0e8ec606b61771da2b675b1793a9ae99c1fab300b5e79f5c02f473",
+  "created_at": "2026-09-12T11:50:34.895453+00:00",
+  "test_scores_seen_before_freeze": false,
+  "notes": [
+    "Validation-only pipeline checks were run before this freeze.",
+    "Retrospective quality events are unreviewed candidates and never modify Q0 truth.",
+    "Model hyperparameters and Q1 detector parameters remain subject to validation-only selection."
+  ]
+}

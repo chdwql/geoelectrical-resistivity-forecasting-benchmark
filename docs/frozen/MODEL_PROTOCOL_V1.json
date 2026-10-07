@@ -1,0 +1,98 @@
+{
+  "status": "frozen",
+  "freeze_kind": "model_protocol_v1",
+  "data_protocol_hash": "f7c65c07da0e8ec606b61771da2b675b1793a9ae99c1fab300b5e79f5c02f473",
+  "config_hashes": {
+    "configs/model_registry.yaml": "eebb897370038d9c300cfa3c367fd6b9c45d07011e04b508ea8a2151cd4b44fc",
+    "configs/statistical_models.yaml": "c4028c789ce27c0da44679a53662378928cff6b60b7979c1a39a4c05d5f27f50",
+    "configs/target_domain_models.yaml": "1f1a30f1d2064b9e331fa79aad8e9c408859faa49b45e4e178fd735e06ee0b6a",
+    "configs/robustness_v1.yaml": "9191cddc3085d26eda12b45b43b1cecadc2fad2179fa4f524377a6f57342e4fc"
+  },
+  "validation_ledger_hash": "9a5f1ac363adcccc825934d8e0a18b08d5ef5a9224bc456bdceed6707e2a91ce",
+  "validation_counts": {
+    "trials": 107,
+    "eligible_main_selection_trials": 92,
+    "sensitivity_trials": 15,
+    "foundation_primary_endpoint_trials": 9
+  },
+  "model_code_hash": "c0356e997b38dc6ee2c28c36fc79f98b327abb844b6e78709b46b607814255bf",
+  "isolated_environment_hash": "fd304333e0d53968689f3c038d25a3aad31d34dd49cf73ca574ec8117bb33e1b",
+  "probability_protocol": {
+    "native_quantile_levels": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "common_interval_coverage": 0.8,
+    "unsupported_interval_coverage": 0.9,
+    "unsupported_policy": "N/A",
+    "quantile_crossing_diagnostic": "raw_adjacent_crossing_rate",
+    "scoring_rearrangement": "per_target_increasing_rearrangement_without_truth",
+    "metrics": [
+      "mean_quantile_loss",
+      "weighted_interval_score",
+      "coverage_80",
+      "width_80"
+    ]
+  },
+  "q1_protocol": {
+    "role": "input_only_sensitivity",
+    "causal": true,
+    "transform": "one_sided_hampel_clip",
+    "selection_split": "validation",
+    "selection_track": "U",
+    "selection_horizon": 90,
+    "selection_models": [
+      "persistence",
+      "drift"
+    ],
+    "selection_metric": "mean_anchor_station_equal_mase",
+    "candidates": {
+      "window": [
+        30,
+        90
+      ],
+      "threshold": [
+        6.0,
+        8.0,
+        10.0
+      ],
+      "minimum_history_by_window": {
+        "30": 14,
+        "90": 30
+      }
+    },
+    "selected": {
+      "window": 30,
+      "threshold": 10.0,
+      "minimum_history": 14,
+      "validation_mean_anchor_station_equal_mase": 7.850135
+    },
+    "transform_order": [
+      "causal_forward_fill_max_3_days",
+      "one_sided_hampel_clip"
+    ],
+    "truth_variant": "Q0",
+    "mase_scale_variant": "Q0_730_day_history"
+  },
+  "context_sensitivity": {
+    "main_context_days": 730,
+    "alternative_context_days": 365,
+    "selection_role": "preregistered_sensitivity_not_model_selection"
+  },
+  "model_protocol_hash": "20d8a8aa1f3955c6663a87942d57147d2ef95c2e29545f77f079ae856fdf0c69",
+  "created_at": "2026-09-14T10:18:49.922737+00:00",
+  "test_scores_seen_before_freeze": false,
+  "formal_test_manifest_audit": [],
+  "notes": [
+    "All model and robustness choices use validation data only.",
+    "Q1 and 365-day context are sensitivity analyses; Q0/730 remains the main protocol.",
+    "Native 90% intervals are unavailable in the common foundation-model contract and are N/A."
+  ]
+}

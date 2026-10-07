@@ -1,0 +1,19 @@
+Geoelectrical Resistivity Forecasting Benchmark
+Copyright 2026 WANG Qinglin
+
+The Apache License 2.0 in the root LICENSE file applies to original project
+code and documentation distributed from this repository.
+
+It does not relicense or grant rights to:
+
+- restricted geophysical observations or database extracts;
+- downloaded model weights, model caches, or upstream source distributions;
+- third-party dependencies, which remain under their respective licenses;
+- third-party trademarks or product names.
+
+In particular, TimesFM 3 model materials are governed by the TimesFM
+Non-Commercial License v1.0, and Moirai-2 weights are governed by
+CC-BY-NC-4.0. These model materials are excluded from the public release.
+
+See docs/REPRODUCTION.md and configs/model_registry.yaml for the
+recorded third-party identities, versions, and license boundaries.

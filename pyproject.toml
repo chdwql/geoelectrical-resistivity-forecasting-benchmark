@@ -1,0 +1,38 @@
+[project]
+name = "geoelectrical-resistivity-forecasting-benchmark"
+version = "0.1.0"
+description = "A leakage-resistant benchmark for apparent-resistivity time-series forecasting"
+readme = "README.md"
+authors = [
+    { name = "WANG Qinglin", email = "chd_wql@qq.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "duckdb>=1.4.0",
+    "lightgbm>=4.7,<5",
+    "numpy>=2.1",
+    "pandas>=2.2",
+    "pyarrow>=18",
+    "pydantic>=2.10",
+    "pyyaml>=6.0.2",
+    "scikit-learn>=1.9.1",
+    "statsmodels>=0.15.0",
+    "typer>=0.15",
+]
+
+[project.scripts]
+geo-bench = "geoelectrical_resistivity_forecasting_benchmark.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
