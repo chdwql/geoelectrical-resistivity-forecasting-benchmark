@@ -1,6 +1,6 @@
 [project]
 name = "geoelectrical-resistivity-forecasting-benchmark"
-version = "0.1.0"
+version = "0.2.0"
 description = "A leakage-resistant benchmark for apparent-resistivity time-series forecasting"
 readme = "README.md"
 authors = [
@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "matplotlib>=3.10,<4",
     "duckdb>=1.4.0",
     "lightgbm>=4.7,<5",
     "numpy>=2.1",

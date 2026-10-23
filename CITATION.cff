@@ -7,8 +7,8 @@ authors:
     given-names: Qinglin
     affiliation: Shandong Earthquake Agency
     orcid: "https://orcid.org/0009-0002-1892-5450"
-version: 0.1.0
-date-released: '2026-10-07'
+version: 0.2.0
+date-released: '2026-10-23'
 license: Apache-2.0
 repository-code: "https://github.com/chdwql/geoelectrical-resistivity-forecasting-benchmark"
 abstract: "Reproduction code, frozen configurations, and aggregate result inputs for an apparent-resistivity observation forecasting benchmark."

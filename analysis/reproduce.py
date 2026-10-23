@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -26,6 +27,13 @@ def main() -> None:
     counts = {folder: len(list((output / folder).glob(pattern))) for folder, (pattern, _) in expected.items()}
     if any(counts[folder] != count for folder, (_, count) in expected.items()):
         raise RuntimeError(f"Reproduction output counts differ from the frozen paper: {counts}")
+    subprocess.run([sys.executable, str(ROOT / 'analysis/acta_figures.py')], cwd=ROOT, env=env, check=True)
+    additional = output / 'postreview'
+    additional.mkdir(parents=True, exist_ok=True)
+    for source in (ROOT / 'artifacts/postreview_20261023').glob('*.csv'):
+        shutil.copy2(source, additional / source.name)
+    if len(list(additional.glob('*.csv'))) != 6:
+        raise RuntimeError('Expected six public exploratory aggregate tables')
     print(json.dumps({"output": str(output), "counts": counts,
                       "scope": "figure/table reconstruction from published aggregate inputs; synthetic pipeline check"}, indent=2))
 

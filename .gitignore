@@ -62,5 +62,7 @@ analysis/*
 !analysis/supplementary_figures.py
 !analysis/public_release.py
 !analysis/reproduce.py
+!analysis/postreview_audit.py
+!analysis/acta_figures.py
 tests/test_manuscript_assembly.py
 tests/test_manuscript_text.py

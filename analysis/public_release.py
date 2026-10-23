@@ -25,12 +25,16 @@ PUBLIC_FILES = [
     "analysis/g6_remaining.py", "analysis/g6_report.py", "analysis/test_g6_report.py",
     "analysis/manuscript_figures.py", "analysis/manuscript_tables.py",
     "analysis/supplementary_figures.py", "analysis/public_release.py", "analysis/reproduce.py",
+    "analysis/postreview_audit.py", "analysis/acta_figures.py",
     "examples/__init__.py", "examples/README.md", "examples/synthetic_end_to_end.py",
     "docs/REPRODUCTION.md", "docs/MODEL_ENVIRONMENTS.md",
     "docs/frozen/DATA_PROTOCOL_V1.json", "docs/frozen/MODEL_PROTOCOL_V1.json",
 ]
 EXCLUDED_FILES = {"tests/test_manuscript_assembly.py", "tests/test_manuscript_text.py"}
 SAFE_ARTIFACTS = [
+    *[f"artifacts/postreview_20261023/{name}.csv" for name in
+      ("season_matched_u90", "season_matched_rank_correlations", "probability_u90",
+       "h1_synchronous_bootstrap", "h3_synchronous_bootstrap", "matched_effect_changes_descriptive")],
     "artifacts/data_v1/series_catalog.csv",
     "artifacts/g6/task_coverage.csv",
     "artifacts/g6/h1_primary_comparisons.csv",
@@ -119,7 +123,7 @@ def build_archive(destination: Path = DEFAULT_ARCHIVE) -> dict[str, object]:
     files = collect_files()
     manifest = {
         "release": "geoelectrical-resistivity-forecasting-benchmark-public",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "scope": "reproduction code, frozen configuration, synthetic example and aggregate figure/table sources",
         "contains_restricted_observations": False,
         "contains_model_weights": False,
